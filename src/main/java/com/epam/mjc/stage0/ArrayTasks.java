@@ -133,25 +133,25 @@ public class ArrayTasks {
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i].length > arr[j].length) {
-                    int[] temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j].length > arr[j + 1].length) {
+                    int[] temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
         }
-
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length - 1; j++) {
-                for (int k = j + 1; k < arr[i].length; k++) {
-                    if (arr[i][j] > arr[i][k]) {
-                        int temp = arr[i][j];
-                        arr[i][j] = arr[i][k];
-                        arr[i][k] = temp;
+                for (int k = 0; k < arr[i].length - j - 1; k++) {
+                    if (arr[i][k] > arr[i][k + 1]) {
+                        int temp = arr[i][k];
+                        arr[i][k] = arr[i][k + 1];
+                        arr[i][k + 1] = temp;
                     }
                 }
+
             }
         }
 
